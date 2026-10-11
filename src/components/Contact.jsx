@@ -13,26 +13,65 @@ export default function Contact({ onToast }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedUrls, setSubmittedUrls] = useState({ mailtoUrl: '', gmailUrl: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const emailTo = "sakshidevathara303@gmail.com";
+    const emailSubject = `[CCE Preparation Doubt] ${formData.subject} - from ${formData.name}`;
+    const emailBody = 
+`Hello Sakshi,
+
+A student has submitted a preparation doubt through your mentorship portal:
+
+• Student Name: ${formData.name}
+• Instagram / Email: ${formData.handle}
+• Target Examination: ${formData.targetExam}
+• Subject Focus: ${formData.subject}
+
+Question / Preparation Doubt:
+--------------------------------------------------
+${formData.message}
+--------------------------------------------------
+
+Sent via Sakshi Devathara Mentorship Website`;
+
+    // 1. Post to Netlify forms if deployed on Netlify
+    const encodedData = new URLSearchParams({
+      'form-name': 'preparation-doubt',
+      'name': formData.name,
+      'handle': formData.handle,
+      'targetExam': formData.targetExam,
+      'subject': formData.subject,
+      'message': formData.message
+    }).toString();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodedData
+    }).catch(() => {
+      // Ignore background post failures in dev
+    });
+
+    // 2. Generate mailto and direct Gmail web links
+    const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailTo}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    setSubmittedUrls({ mailtoUrl, gmailUrl });
+
+    // Open user's default email client
+    window.location.href = mailtoUrl;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       if (onToast) {
-        onToast("Doubt submitted! Sakshi or team will review and reply soon. 🌟");
+        onToast("Doubt prepared! Opening email client to send to Sakshi ✉️");
       }
-      setFormData({
-        name: '',
-        handle: '',
-        targetExam: 'Gujarat CCE Group A/B',
-        subject: 'Geography / Map Work',
-        message: ''
-      });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 600);
+    }, 500);
   };
 
   const socials = [
@@ -117,15 +156,64 @@ export default function Contact({ onToast }) {
             </p>
 
             {isSubmitted ? (
-              <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
-                <CheckCircle2 size={48} style={{ color: 'var(--gold-primary)', margin: '0 auto 1rem' }} />
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Doubt Submitted Successfully!</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                  Thank you! Sakshi addresses recurring student questions in upcoming reels and posts.
+              <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                <CheckCircle2 size={46} style={{ color: 'var(--gold-primary)', margin: '0 auto 1rem' }} />
+                <h4 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.4rem' }}>
+                  Email Prepared for Sakshi! ✉️
+                </h4>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto 1.25rem', lineHeight: 1.6 }}>
+                  Your email app was triggered with your doubt pre-filled and addressed to <strong>sakshidevathara303@gmail.com</strong>.
                 </p>
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                  <a
+                    href={submittedUrls.gmailUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold-primary"
+                    style={{ fontSize: '0.86rem', padding: '0.65rem 1.25rem' }}
+                  >
+                    <Mail size={16} />
+                    <span>Send via Gmail Web 🌐</span>
+                  </a>
+                  <a
+                    href={submittedUrls.mailtoUrl}
+                    className="btn-gold-glass"
+                    style={{ fontSize: '0.86rem', padding: '0.65rem 1.25rem' }}
+                  >
+                    <span>Open Mail App 📱</span>
+                  </a>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setFormData({
+                      name: '',
+                      handle: '',
+                      targetExam: 'Gujarat CCE Group A/B',
+                      subject: 'Geography / Map Work',
+                      message: ''
+                    });
+                  }}
+                  style={{ background: 'none', border: 'none', color: 'var(--gold-light)', fontSize: '0.82rem', textDecoration: 'underline', cursor: 'pointer' }}
+                >
+                  Ask another question
+                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
+              <form
+                name="preparation-doubt"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+              >
+                <input type="hidden" name="form-name" value="preparation-doubt" />
+                <p style={{ display: 'none' }}>
+                  <label>Don’t fill this out: <input name="bot-field" /></label>
+                </p>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div className="form-group-gold">
                     <label className="form-label-gold">Your Name</label>
