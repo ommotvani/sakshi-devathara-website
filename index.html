@@ -29,8 +29,40 @@
 
   <!-- Google Fonts: Cinzel (Luxury Serif), Poppins (Headings), Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Google Structured Data / Knowledge Graph (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sakshi-devathara.netlify.app/#person",
+        "name": "Sakshi Devathara",
+        "alternateName": ["LTech Sakshi Devathara", "Sakshi Devathara Mentor"],
+        "description": "Government exam aspirant, Gujarat CCE & GPSC mentor, study content creator, and author of verified Geography & Panchayati Raj notes.",
+        "image": "https://sakshi-devathara.netlify.app/profile.PNG",
+        "sameAs": [
+          "https://www.instagram.com/ltech_sakshi_devathara/",
+          "https://t.me/+qxFd09XOPb9jMWQ1"
+        ],
+        "jobTitle": "Government Exam Aspirant & Study Content Creator",
+        "knowsAbout": ["Gujarat CCE", "GPSC", "Gujarat Geography", "Panchayati Raj", "Indian Constitution"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sakshi-devathara.netlify.app/#website",
+        "url": "https://sakshi-devathara.netlify.app/",
+        "name": "Sakshi Devathara Official Website",
+        "description": "Official study notes, Gujarat CCE guidance, preparation strategy, and video guides by Sakshi Devathara.",
+        "publisher": {
+          "@id": "https://sakshi-devathara.netlify.app/#person"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Hidden form for Netlify build-time form processing -->
