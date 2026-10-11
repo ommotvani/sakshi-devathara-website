@@ -58,7 +58,75 @@ export default function RoutineAndSubjects() {
         </div>
 
         {/* 9 3D Flip Subject Cards */}
-        
+        <div className="subjects-grid-gold">
+          {SITE_CONFIG.subjects.map((sub) => {
+            const isFlipped = !!flippedCards[sub.id];
+            return (
+              <div
+                key={sub.id}
+                className={`flip-card-gold ${isFlipped ? 'is-flipped' : ''}`}
+                onClick={() => toggleFlip(sub.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    toggleFlip(sub.id);
+                  }
+                }}
+              >
+                <div className="flip-card-inner-gold">
+                  {/* Front Side */}
+                  <div className="flip-front-gold">
+                    <div>
+                      <div className="subject-header-gold">
+                        <span className="subject-icon-box-gold">{sub.icon}</span>
+                        <span className="subject-weight-gold">{sub.weightage}</span>
+                      </div>
+                      <h4 className="subject-title-gold">{sub.title}</h4>
+                      <div className="subject-topics-preview">
+                        {sub.topics.slice(0, 3).map((topic, i) => (
+                          <span key={i} className="subject-topic-pill">
+                            • {topic}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flip-hint-gold">
+                      <span>Click to view strategy</span>
+                      <RefreshCw size={13} />
+                    </div>
+                  </div>
+
+                  {/* Back Side */}
+                  <div className="flip-back-gold">
+                    <div>
+                      <div className="subject-header-gold">
+                        <span className="subject-icon-box-gold">{sub.icon}</span>
+                        <span className="subject-weight-gold">Exam Strategy</span>
+                      </div>
+                      <h5 className="flip-back-title">Core Focus Topics:</h5>
+                      <ul className="flip-back-list">
+                        {sub.topics.map((topic, i) => (
+                          <li key={i}>
+                            <CheckCircle2 size={13} color="var(--gold-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                            <span>{topic}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="flip-back-tip">
+                        <strong>Tip:</strong> {sub.tip}
+                      </div>
+                    </div>
+                    <div className="flip-hint-gold">
+                      <span>Click to flip back</span>
+                      <RefreshCw size={13} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

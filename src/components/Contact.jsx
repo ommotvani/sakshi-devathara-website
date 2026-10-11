@@ -214,7 +214,7 @@ Sent via Sakshi Devathara Mentorship Website`;
                 <p style={{ display: 'none' }}>
                   <label>Don’t fill this out: <input name="bot-field" /></label>
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="contact-form-row">
                   <div className="form-group-gold">
                     <label className="form-label-gold">Your Name</label>
                     <input
@@ -239,7 +239,7 @@ Sent via Sakshi Devathara Mentorship Website`;
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="contact-form-row">
                   <div className="form-group-gold">
                     <label className="form-label-gold">Target Examination</label>
                     <select

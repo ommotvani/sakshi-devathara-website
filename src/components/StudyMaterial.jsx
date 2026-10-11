@@ -156,9 +156,9 @@ export default function StudyMaterial({ onToast }) {
         </div>
 
         {/* Telegram Community Callout Banner */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', padding: '1.35rem 1.75rem', background: 'linear-gradient(135deg, rgba(34, 158, 217, 0.12) 0%, rgba(212, 175, 55, 0.08) 100%)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-lg)', marginBottom: '3.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'linear-gradient(135deg, #229ED9 0%, #1e88e5 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+        <div className="telegram-callout-banner-gold">
+          <div className="telegram-callout-content">
+            <div className="telegram-callout-icon">
               <Telegram size={24} />
             </div>
             <div>
