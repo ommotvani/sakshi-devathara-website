@@ -14,7 +14,7 @@ import {
   Mail,
   Download
 } from 'lucide-react';
-import { Instagram, Youtube } from './BrandIcons';
+import { Instagram, Telegram } from './BrandIcons';
 
 export default function Navbar({ theme, onToggleTheme, activeSection }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -178,13 +178,13 @@ export default function Navbar({ theme, onToggleTheme, activeSection }) {
                 <Instagram size={15} /> Instagram
               </a>
               <a 
-                href="https://youtube.com/@ltech_sakshi_devathara" 
+                href="https://t.me/+qxFd09XOPb9jMWQ1" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-gold-secondary"
                 style={{ flex: 1, padding: '0.5rem', fontSize: '0.82rem', justifyContent: 'center' }}
               >
-                <Youtube size={15} /> YouTube
+                <Telegram size={15} /> Telegram
               </a>
             </div>
           </div>

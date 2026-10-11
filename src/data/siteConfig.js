@@ -6,9 +6,7 @@ export const SITE_CONFIG = {
     focus: "Gujarat Competitive Exams • Gujarat CCE & GPSC",
     heroQuote: "Dream Big. Study Smart. Stay Consistent. Achieve Your Goals. 🎯📚",
     instagramUrl: "https://www.instagram.com/ltech_sakshi_devathara/",
-    youtubeUrl: "https://youtube.com/@ltech_sakshi_devathara",
     telegramUrl: "https://t.me/+qxFd09XOPb9jMWQ1",
-    whatsappUrl: "https://whatsapp.com/channel/ltech_sakshi",
     email: "sakshidevathara303@gmail.com"
   },
 

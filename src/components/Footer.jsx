@@ -1,7 +1,7 @@
 import React from 'react';
 import { SITE_CONFIG } from '../data/siteConfig';
-import { ArrowUp, MessageCircle, Mail, Heart } from 'lucide-react';
-import { Instagram, Youtube, Telegram } from './BrandIcons';
+import { ArrowUp, Mail, Heart } from 'lucide-react';
+import { Instagram, Telegram } from './BrandIcons';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -49,24 +49,6 @@ export default function Footer() {
               title="Instagram"
             >
               <Instagram size={18} />
-            </a>
-            <a
-              href={SITE_CONFIG.profile.youtubeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reel-ctrl-btn-gold"
-              title="YouTube"
-            >
-              <Youtube size={18} />
-            </a>
-            <a
-              href={SITE_CONFIG.profile.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reel-ctrl-btn-gold"
-              title="WhatsApp Channel"
-            >
-              <MessageCircle size={18} />
             </a>
             <a
               href={`mailto:${SITE_CONFIG.profile.email}`}

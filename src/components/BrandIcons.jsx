@@ -22,27 +22,6 @@ export function Instagram({ size = 20, className = '', color = 'currentColor', f
   );
 }
 
-export function Youtube({ size = 20, className = '', color = 'currentColor', fill = 'none', style, ...props }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill={fill}
-      stroke={color}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      style={{ display: 'inline-block', verticalAlign: 'middle', ...style }}
-      {...props}
-    >
-      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-      <polygon points="10 15 15 12 10 9 10 15" fill={color} />
-    </svg>
-  );
-}
-
 export function Telegram({ size = 20, className = '', color = 'currentColor', fill = 'none', style, ...props }) {
   return (
     <svg
@@ -65,6 +44,4 @@ export function Telegram({ size = 20, className = '', color = 'currentColor', fi
 }
 
 export const InstagramIcon = Instagram;
-export const YoutubeIcon = Youtube;
 export const TelegramIcon = Telegram;
-

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SITE_CONFIG } from '../data/siteConfig';
-import { MessageSquare, MessageCircle, Mail, Send, CheckCircle2 } from 'lucide-react';
-import { Instagram, Youtube, Telegram } from './BrandIcons';
+import { MessageSquare, Mail, Send, CheckCircle2 } from 'lucide-react';
+import { Instagram, Telegram } from './BrandIcons';
 
 export default function Contact({ onToast }) {
   const [formData, setFormData] = useState({
@@ -51,22 +51,6 @@ export default function Contact({ onToast }) {
       link: SITE_CONFIG.profile.instagramUrl,
       icon: <Instagram size={22} />,
       gradient: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)"
-    },
-    {
-      title: "YouTube",
-      handle: "@ltech_sakshi_devathara",
-      desc: "Study Vlogs & Detailed Strategy Guides",
-      link: SITE_CONFIG.profile.youtubeUrl,
-      icon: <Youtube size={22} />,
-      gradient: "linear-gradient(135deg, #ff0000 0%, #cc0000 100%)"
-    },
-    {
-      title: "WhatsApp Channel",
-      handle: "LTech Aspirants Hub",
-      desc: "Instant Exam Alerts & PDF Releases",
-      link: SITE_CONFIG.profile.whatsappUrl,
-      icon: <MessageCircle size={22} />,
-      gradient: "linear-gradient(135deg, #25d366 0%, #128c7e 100%)"
     },
     {
       title: "Email Support",
